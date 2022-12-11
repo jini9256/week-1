@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-function Button({ ClickMode, value }) {
+function Button({ addInput, value }) {
   return (
-    <button className="btn-style" onClick="ClickMode">
+    <button className="btn-style" onClick="addInput">
       {value}
     </button>
   );

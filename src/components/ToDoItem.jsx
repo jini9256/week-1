@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import Button from "../components/Button";
+import Button from "./Button";
+import Todo from "./Todo";
 
 function ToDoItem({ toDo, setToDo, name }) {
   return (
     <div>
-      <h2>인풋에서 적힌 값이 들어가는곳 hihi</h2>
+      <h2>Done or Working</h2>
 
-      <div></div>
+      {toDo.Todo.map((item) => {})}
+      <Button value="완료"></Button>
+      <Button value="삭제"></Button>
     </div>
   );
 }
