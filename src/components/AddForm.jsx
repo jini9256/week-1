@@ -1,45 +1,53 @@
 import React, { useState } from "react";
-import { v4 as uuid } from "uuid";
-import Button from "../components/Button";
+import { v4 as uuidv4 } from "uuid";
 
-const AddForm = ({ toDo, setToDo }) => {
-  const [input, setInput] = useState("");
+function AddForm({ setTodos }) {
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
 
-  // 인풋값이 바뀔때 '인풋'이라는 값으로 업데이트되도록함
-  const ChangeMode = (e) => {
-    setInput(e.target.value);
+  const submitClick = (event) => {
+    event.preventDefault();
+    // console.log("hihi");
+    const newTodos = {
+      title: title,
+      text: text,
+      isDone: false,
+      id: uuidv4(),
+    };
+    setTodos((prev) => {
+      return [...prev, newTodos];
+    });
   };
 
-  const addInput = (event) => {
-    event.preventDefault();
-    const newInput = input.trim();
-    // console.log(input);
+  const titleChange = (event) => {
+    setTitle(event.target.value);
+  };
 
-    if (!newInput) {
-      setInput("");
-      return;
-    }
-    setToDo((prev) => [...prev, { toDo, isDone: false, id: uuid() }]);
-
-    setInput("");
+  const textChange = (event) => {
+    setText(event.target.value);
   };
 
   return (
-    <div className="form-body">
-      <form onSubmit={addInput}>
-        <label for="label-text">오늘은 뭐하지?</label>
+    <div className="add-form">
+      <form onSubmit={submitClick}>
+        <label for="label">제목</label>
         <input
-          placeholder="오늘의 일정"
-          type="text"
-          id="label-text"
-          onChange={ChangeMode}
-          value={input}
+          id="label"
+          value={title}
+          onChange={titleChange}
+          placeholder="제목을 적으세요."
         ></input>
-
-        <Button value="작성하기" />
+        <label for="label-two">할일</label>
+        <input
+          id="label-two"
+          value={text}
+          onChange={textChange}
+          placeholder="내용을 적으세요."
+        ></input>
+        <button className="btn-style">추가</button>
       </form>
     </div>
   );
-};
+}
 
 export default AddForm;

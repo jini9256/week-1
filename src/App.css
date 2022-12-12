@@ -1,67 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
+
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  margin: 0px;
+  font-family: "Poor Story";
 }
 
-.layout {
-  margin: 0 auto;
-  max-width: 1200px;
-  min-width: 800px;
-}
-.container {
-  background-color: antiquewhite;
+.add-form {
+  padding: 30px;
+  background-color: teal;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
-
-  height: 150px;
-  width: 100%;
-}
-
-.containerTwo {
-  padding: 20px;
-}
-
-.form-body {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
-
-  height: 60px;
-
-  color: teal;
-  font-size: large;
 }
 
-#label-text {
-  height: 30px;
+.todoitem {
+  width: 300px;
+  border: 1px solid rgb(157, 234, 234);
   border-radius: 10px;
-  border: 2px solid teal;
+
+  background-color: teal;
+
+  color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin: 10px;
-  text-align: center;
 }
 
 .btn-style {
-  color: rgb(243, 240, 236);
-  background-color: teal;
-  height: 30px;
+  background-color: antiquewhite;
   border-radius: 10px;
-  margin: 2px;
+  border: none;
+  margin: 10px;
+  padding: 6px;
+  font-family: "Poor Story";
+  color: teal;
 }
 
-section {
-  display: flex;
+.btn-style:hover {
+  transform: scale(1.4);
+  transition: transform 0.3s;
+}
+.todobox {
+  margin: 10px;
 }
 
-.todoBox {
-  border: 1px solid black;
-  border-radius: 10px;
+input {
+  font-family: "Poor Story";
   margin: 10px;
   width: 150px;
+  height: 25px;
+  border-radius: 10px;
+  text-align: center;
+  color: teal;
+}
+
+label {
+  color: antiquewhite;
+}
+
+.board-row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
   align-items: center;
+
+  position: sticky;
 }

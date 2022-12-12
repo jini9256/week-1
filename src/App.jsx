@@ -1,93 +1,37 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import Header from "./components/Header";
+import AddForm from "./components/AddForm";
+import Todoboard from "./components/Todoboard";
+import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 
 function App() {
-  //결과적으로 우리 눈에 보이는 값. 입력값이 보여지는 곳
-  const [todos, setTodos] = useState(firstTodos);
-
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const newTodos = {
-      title: title,
-      text: text,
-      isDone: false,
-      id: uuidv4(),
-    };
-
-    setTodos((prev) => [...prev, newTodos]);
-  };
+  // 서브밋되었을때 출력되는 화면을 먼저 만들어보자
+  const [todos, setTodos] = useState(iniTodos);
 
   return (
-    <div className="layout">
-      <Header title="To Do List 😉" />
-      <main className="containerTwo">
-        <form onSubmit={handleSubmit} className="form-body">
-          <label for="label-text">🔜</label>
-          <input
-            id="label-text"
-            placeholder="title"
-            value={title}
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          ></input>
+    <div>
+      <Header header="🍀 Todo List" />
+      {/* <header>헤더야</header> */}
+      <main>
+        {/* 인풋값이 쓰여지는 부분 */}
+        <AddForm setTodos={setTodos} />
 
-          <input
-            id="label-text"
-            placeholder="text"
-            value={text}
-            onChange={(e) => {
-              setText(e.target.value);
-            }}
-          ></input>
-          <button className="btn-style">추가하기</button>
-        </form>
-
-        <h2>해야할 일🔥</h2>
-        <section>
-          {todos
-            .filter((item) => item.isDone === false)
-            .map((item) => {
-              return (
-                <div className="todoBox">
-                  <h3>{item.title}</h3>
-                  <h4>{item.text}</h4>
-                  <button className="btn-style">추가</button>
-                  <button className="btn-style">삭제</button>
-                </div>
-              );
-            })}
-        </section>
-        <h2>완료한 일🤩</h2>
-        <section>
-          {todos
-            .filter((item) => item.isDone === true)
-            .map((item) => {
-              return (
-                <div className="todoBox">
-                  <h3>{item.title}</h3>
-                  <h4>{item.text}</h4>
-                  <button className="btn-style">추가</button>
-                  <button className="btn-style">삭제</button>
-                </div>
-              );
-            })}
-        </section>
+        {/* 서브밋되서 화면에 받아오는 부분 */}
+        <div className="board-row">
+          <Todoboard todos={todos} setTodos={setTodos} isWork={true} />
+          <Todoboard todos={todos} setTodos={setTodos} isWork={false} />
+        </div>
       </main>
     </div>
   );
 }
 
-const firstTodos = [
-  { title: "12월11일", text: "후발대수업", isDone: false, id: uuidv4() },
-  { title: "12월12일", text: "과제완성하기", isDone: true, id: uuidv4() },
-  { title: "12월13일", text: "코드리뷰", isDone: true, id: uuidv4() },
+//복잡한 값이니까 아래로 내려놓자
+const iniTodos = [
+  { title: "오늘 과제는?", text: "과제만들기", isDone: false, id: uuidv4() },
+  { title: "오늘 뭐 먹지?", text: "롤리폴리", isDone: false, id: uuidv4() },
+  { title: "오늘 커피는?", text: "2잔 마심", isDone: true, id: uuidv4() },
 ];
 
 export default App;

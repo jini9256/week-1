@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Header({ title }) {
+function Header({ header }) {
   return (
-    <div className="container">
-      <h1>{title}</h1>
+    <div>
+      <h1>{header}</h1>
     </div>
   );
 }
+
 export default Header;
