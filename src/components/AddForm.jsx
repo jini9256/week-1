@@ -8,6 +8,17 @@ function AddForm({ setTodos }) {
   const submitClick = (event) => {
     event.preventDefault();
     // console.log("hihi");
+
+    if (!title) {
+      alert("제목을 입력해줘");
+      return;
+    }
+
+    if (!text) {
+      alert("내용을 입력해줘");
+      return;
+    }
+
     const newTodos = {
       title: title,
       text: text,
@@ -17,6 +28,9 @@ function AddForm({ setTodos }) {
     setTodos((prev) => {
       return [...prev, newTodos];
     });
+
+    setTitle("");
+    setText("");
   };
 
   const titleChange = (event) => {
